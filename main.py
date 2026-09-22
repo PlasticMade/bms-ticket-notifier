@@ -400,6 +400,7 @@ def send_email(subject, changes, shows, movie_info):
 
     now_str = datetime.now().strftime("%d %b %Y, %I:%M %p")
     movie_name = movie_info.get("name", "Movie")
+    movie_url = CONFIG["url"].strip()
 
     # Build changes HTML
     changes_html = ""
@@ -466,7 +467,18 @@ def send_email(subject, changes, shows, movie_info):
     <p style="margin:0 0 20px 0;font-size:13px;color:#666;">
         {escape(now_str)}
     </p>
-    <hr style="border:none;border-top:1px solid #ddd;margin:0 0 20px 0;">
+       <hr style="border:none;border-top:1px solid #ddd;margin:0 0 20px 0;">
+
+    <p style="margin:0 0 20px 0;">
+      <a href="{escape(movie_url)}"
+         style="display:inline-block;padding:10px 18px;
+                background:#e50914;color:#fff;text-decoration:none;
+                border-radius:5px;font-weight:bold;">
+        🎟️ Open BookMyShow
+      </a>
+    </p>
+
+    {changes_html}
     {changes_html}
     <h3 style="margin:0 0 8px 0;font-size:15px;font-weight:bold;color:#333;">
         Current Showtimes
@@ -479,7 +491,14 @@ def send_email(subject, changes, shows, movie_info):
 </html>"""
 
     # Build plain-text version with full show details
-    plain_lines = [subject, "", f"Checked at: {now_str}", ""]
+    plain_lines = [
+        subject,
+        "",
+        f"Checked at: {now_str}",
+        "",
+        f"BookMyShow: {movie_url}",
+        "",
+    ]
     if changes:
         plain_lines.append("Changes Detected:")
         plain_lines.extend(f"  - {c}" for c in changes)
