@@ -2,9 +2,9 @@ name: BMS Ticket Checker
 
 on:
   schedule:
-    # Runs at 17 and 47 minutes past every hour
     - cron: '17,47 * * * *'
-  workflow_dispatch:  # Manual trigger button
+      timezone: "Asia/Kolkata"
+  workflow_dispatch:
 
 jobs:
   check-tickets:
