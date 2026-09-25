@@ -1,12 +1,12 @@
 {
   "shows": {},
   "dates": {
-    "20260925": "BOOKABLE",
-    "20260926": "AVAILABLE",
+    "20260926": "BOOKABLE",
     "20260927": "AVAILABLE",
     "20260928": "AVAILABLE",
     "20260929": "AVAILABLE",
     "20260930": "AVAILABLE",
-    "20261001": "AVAILABLE"
+    "20261001": "AVAILABLE",
+    "20261002": "NOT_OPEN"
   }
 }
